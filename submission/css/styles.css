@@ -518,3 +518,14 @@ footer p {
     grid-template-columns: 1fr 1fr;
   }
 }
+.banner-caption {
+  display: none;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.banner-caption.show {
+  display: block;
+}
