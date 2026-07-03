@@ -23,17 +23,21 @@ packages.forEach(function (pkg) {
 
   packagesList.appendChild(card);
 });
+
 const wishlistInput = document.getElementById("wishlist-input");
 const wishlistAddBtn = document.getElementById("wishlist-add-btn");
 const wishlistItems = document.getElementById("wishlist-items");
 
-wishlistAddBtn.addEventListener("click", function () {
-  const itemText = wishlistInput.value.trim();
+function saveWishlist() {
+  const items = [];
+  const liElements = wishlistItems.querySelectorAll("li");
+  liElements.forEach(function (li) {
+    items.push(li.firstChild.textContent);
+  });
+  localStorage.setItem("wishlist", JSON.stringify(items));
+}
 
-  if (itemText === "") {
-    return;
-  }
-
+function createWishlistItem(itemText) {
   const li = document.createElement("li");
   li.textContent = itemText;
 
@@ -43,13 +47,34 @@ wishlistAddBtn.addEventListener("click", function () {
 
   removeBtn.addEventListener("click", function () {
     li.remove();
+    saveWishlist();
   });
 
   li.appendChild(removeBtn);
   wishlistItems.appendChild(li);
+}
 
+function loadWishlist() {
+  const savedItems = JSON.parse(localStorage.getItem("wishlist")) || [];
+  savedItems.forEach(function (itemText) {
+    createWishlistItem(itemText);
+  });
+}
+
+wishlistAddBtn.addEventListener("click", function () {
+  const itemText = wishlistInput.value.trim();
+
+  if (itemText === "") {
+    return;
+  }
+
+  createWishlistItem(itemText);
+  saveWishlist();
   wishlistInput.value = "";
 });
+
+loadWishlist();
+
 const bookingForm = document.getElementById("booking-form");
 const bookingFeedback = document.getElementById("booking-feedback");
 
