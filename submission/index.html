@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -105,15 +105,15 @@
     </section>
 
     <!-- WISHLIST SECTION -->
-<section id="wishlist" class="wishlist">
-  <h2>My Booking Wishlist</h2>
-  <p>Add experiences you're interested in booking:</p>
-  <div class="wishlist-input">
-    <input type="text" id="wishlist-input" placeholder="e.g. F1 Simulator Session" />
-    <button id="wishlist-add-btn">Add</button>
-  </div>
-  <ul id="wishlist-items"></ul>
-</section>
+    <section id="wishlist" class="wishlist">
+      <h2>My Booking Wishlist</h2>
+      <p>Add experiences you're interested in booking:</p>
+      <div class="wishlist-input">
+        <input type="text" id="wishlist-input" placeholder="e.g. F1 Simulator Session" />
+        <button id="wishlist-add-btn">Add</button>
+      </div>
+      <ul id="wishlist-items"></ul>
+    </section>
 
     <!-- GALLERY SECTION -->
     <section id="gallery" class="gallery-section">
@@ -160,6 +160,18 @@
           <p>@REVVirtualRacing</p>
         </div>
       </div>
+
+      <div class="booking-form-wrapper">
+        <h3>Send a Booking Inquiry</h3>
+        <form id="booking-form">
+          <input type="text" id="booking-name" placeholder="Your Name" />
+          <input type="email" id="booking-email" placeholder="Your Email" />
+          <textarea id="booking-message" placeholder="Tell us what you'd like to book..."></textarea>
+          <button type="submit">Submit Inquiry</button>
+        </form>
+        <div id="booking-feedback"></div>
+      </div>
+
     </section>
 
   </main>

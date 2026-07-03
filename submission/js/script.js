@@ -50,3 +50,30 @@ wishlistAddBtn.addEventListener("click", function () {
 
   wishlistInput.value = "";
 });
+const bookingForm = document.getElementById("booking-form");
+const bookingFeedback = document.getElementById("booking-feedback");
+
+bookingForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const nameValue = document.getElementById("booking-name").value.trim();
+  const emailValue = document.getElementById("booking-email").value.trim();
+  const messageValue = document.getElementById("booking-message").value.trim();
+
+  if (nameValue === "" || emailValue === "" || messageValue === "") {
+    bookingFeedback.textContent = "Please fill in all fields before submitting.";
+    bookingFeedback.className = "feedback-error";
+    return;
+  }
+
+  if (!emailValue.includes("@") || !emailValue.includes(".")) {
+    bookingFeedback.textContent = "Please enter a valid email address.";
+    bookingFeedback.className = "feedback-error";
+    return;
+  }
+
+  bookingFeedback.textContent = "Thanks, " + nameValue + "! Your inquiry has been received. We'll get back to you at " + emailValue + ".";
+  bookingFeedback.className = "feedback-success";
+
+  bookingForm.reset();
+});
