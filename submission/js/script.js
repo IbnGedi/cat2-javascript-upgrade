@@ -23,3 +23,30 @@ packages.forEach(function (pkg) {
 
   packagesList.appendChild(card);
 });
+const wishlistInput = document.getElementById("wishlist-input");
+const wishlistAddBtn = document.getElementById("wishlist-add-btn");
+const wishlistItems = document.getElementById("wishlist-items");
+
+wishlistAddBtn.addEventListener("click", function () {
+  const itemText = wishlistInput.value.trim();
+
+  if (itemText === "") {
+    return;
+  }
+
+  const li = document.createElement("li");
+  li.textContent = itemText;
+
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "Remove";
+  removeBtn.className = "remove-btn";
+
+  removeBtn.addEventListener("click", function () {
+    li.remove();
+  });
+
+  li.appendChild(removeBtn);
+  wishlistItems.appendChild(li);
+
+  wishlistInput.value = "";
+});
