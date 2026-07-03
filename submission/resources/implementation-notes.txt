@@ -1,0 +1,30 @@
+CAT 2 - Implementation Notes
+REV Virtual Racing
+
+1. Loop-rendered dynamic content
+   A "packages" array of objects (each with a "name" and "price" property)
+   is rendered into the Packages & Pricing section using forEach(),
+   createElement(), and appendChild() — no package is hardcoded in the HTML.
+
+2. Dynamically add & remove elements
+   The "My Booking Wishlist" section lets users type an experience and
+   click "Add" to create a new list item using createElement() and
+   appendChild(). Each item has its own "Remove" button that deletes it
+   using remove().
+
+3. Form handling with validation feedback
+   The booking inquiry form in the Contact section uses
+   event.preventDefault() to stop default submission, reads input with
+   .value, and writes visible feedback back to the page using textContent
+   — showing an error if fields are empty or the email is invalid, and a
+   success message with the submitted name/email otherwise.
+
+4. Persistent state with localStorage
+   Wishlist items are saved to localStorage as JSON whenever an item is
+   added or removed, and reloaded automatically when the page loads, so
+   the wishlist survives a page refresh.
+
+5. Click-to-reveal banner
+   Clicking the banner image toggles a "show" class on a hidden caption
+   element using classList.toggle(), revealing a short description of
+   REV Virtual Racing.
